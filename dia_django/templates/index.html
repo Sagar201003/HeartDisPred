@@ -1,0 +1,63 @@
+{%load static%}
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heart Disease prediction</title>
+    {% tailwind_css %}
+  </head>
+  <body class="bg-cover flex flex-col items-center p-20" style="background-image: url('static/img/pexels-adrien-olichon-2387793.jpg');">
+    <div class="flex flex-col items-center">
+      <h1 class="text-white text-6xl tracking-widest">
+        <span class="font-bold">MACHINE LEARNING BASED</span> <br/>
+        <span class="font-bold">HEART DISEASE</span> <br/>
+        <span class="text-gray-400">PREDICTION SYSTEM</span>
+      </h1>
+    </div>   
+    <div class="items-center flex flex-col my-[10vw]" id="checkStatus">
+      <p class="text-white text-2xl">Check your status</p>
+      <button
+        class="bg-[#FAE4B5] text-black py-2 px-8 text-xl rounded font-bold flex justify-center items-center mt-2" onclick="tryIt()"
+      >
+        Try it
+      </button>
+    </div>
+    <!-- Form for taking the data to test  -->
+    <div class="mt-10 hidden" id="form">
+        <form action="/predict" class="bg-[#D9D9D9] grid rounded w-[25vw] p-5" method="post">
+          {% csrf_token %}
+          <label for="for"> age </label>
+          <input type="text" class="input_field" name="age"/>
+          <label for="for"> sex </label>
+          <input type="text" class="input_field" name="sex"/>
+          <label for="for"> cp </label>
+          <input type="text" class="input_field" name="cp"/>
+          <label for="for"> trestbps </label>
+          <input type="text" class="input_field" name="trestbps"/>
+          <label for="for"> chol </label>
+          <input type="text" class="input_field" name="chol"/>
+          <label for="for"> fbs</label>
+          <input type="text" class="input_field" name="fbs"/>
+          <label for="for"> restecg</label>
+          <input type="text" class="input_field" name="restecg"/>
+          <label for="for"> thalach</label>
+          <input type="text" class="input_field" name="thalach"/>
+          <label for="for"> exang</label>
+          <input type="text" class="input_field" name="exang"/>
+          <label for="for"> oldpeak</label>
+          <input type="text" class="input_field" name="oldpeak"/>
+          <label for="for"> slope</label>
+          <input type="text" class="input_field" name="slope"/>
+          <label for="for"> ca</label>
+          <input type="text" class="input_field" name="ca"/>
+          <label for="for"> thal</label>
+          <input type="text" class="input_field" name="thal"/>
+          <button type="submit" id="submit" class="bg-[#FAE4B5] text-black py-2 px-8 text-xl rounded font-bold flex justify-center items-center mt-2 border-[1px] border-black">Submit</button>
+        </form>
+      </div>
+    <script src="{% static 'index.js' %}"></script>
+  </body>
+</html>
